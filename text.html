@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #6d6875;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b5838d;
+        }
+
+        .output-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Generator</h1>
+      <h2> Faculty guide?</h2>
+        <textarea id="promptInput" placeholder="Enter your prompt here..."></textarea>
+        <button id="generateBtn">Generate Text</button>
+        <div id="output" class="output-box"></div>
+    </div>
+
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", () => {
+            const prompt = document.getElementById("promptInput").value;
+            const outputBox = document.getElementById("output");
+
+            if (prompt.trim() === "") {
+                outputBox.innerText = "Please enter a prompt!";
+                outputBox.style.color = "red";
+                return;
+            }
+
+            // Simulating text generation
+            const generatedText = simulateTextGeneration(prompt);
+
+            // Display the generated text
+            outputBox.innerText = generatedText;
+            outputBox.style.color = "#333";
+        });
+
+        function simulateTextGeneration(prompt) {
+            const responses = [
+                "Once upon a time, a new journey began...",
+                "The world was quiet, and everything seemed peaceful.",
+                "In a land far away, something magical was about to happen.",
+                "The story continued with courage and determination.",
+                "And so, they discovered a new way to change the world."
+            ];
+            const randomIndex = Math.floor(Math.random() * responses.length);
+            return `${prompt} ${responses[randomIndex]}`;
+        }
+    </script>
+</body>
+</html>
