@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thought Generator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffcdb2, #e5989b, #b5838d, #6d6875);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      width: 85%;
+      max-width: 600px;
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+      color: #6d6875;
+    }
+
+    .links {
+      margin: 15px 0;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 8px;
+      padding: 10px 20px;
+      background-color: #6d6875;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: #b5838d;
+      transform: scale(1.05);
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: none;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #6d6875;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #b5838d;
+      transform: scale(1.05);
+    }
+
+    .output-box {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      font-size: 18px;
+      font-style: italic;
+      color: #444;
+      min-height: 70px;
+      opacity: 0;
+      transition: opacity 0.7s ease-in-out;
+    }
+
+    .output-box.show {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌟 Thought Generator 🌟</h1>
+
+    <div class="links">
+      <a href="https://youtube.com/shorts/ddC96AFuptw?si=9IOTaD426_Kz6-nb" target="_blank">🎥 Inspirational Short 1</a>
+      <a href="https://youtube.com/shorts/K1_RW5632AE?si=Hj5OJrcU4eBdZF87" target="_blank">🎥 Inspirational Short 2</a>
+    </div>
+
+    <textarea id="promptInput" placeholder="Enter a theme or word (optional)..."></textarea>
+    <button id="generateBtn">✨ Generate Thought</button>
+    <div id="output" class="output-box"></div>
+  </div>
+
+  <script>
+    const responses = [
+      "Every sunrise is a new chance to shine brighter than yesterday.",
+      "Kindness costs nothing, but its value is beyond measure.",
+      "Dream big, work hard, and stay humble.",
+      "Happiness grows when you share it with others.",
+      "Believe in yourself — you are stronger than you think.",
+      "The smallest step in the right direction can change your whole story.",
+      "Patience and consistency turn small efforts into big achievements.",
+      "Even the darkest night ends with the light of dawn.",
+      "Gratitude turns what we have into enough.",
+      "Your smile can brighten someone’s entire day."
+    ];
+
+    const generateBtn = document.getElementById("generateBtn");
+    const outputBox = document.getElementById("output");
+
+    generateBtn.addEventListener("click", () => {
+      const prompt = document.getElementById("promptInput").value.trim();
+      const randomIndex = Math.floor(Math.random() * responses.length);
+      const thought = responses[randomIndex];
+
+      outputBox.classList.remove("show"); 
+      void outputBox.offsetWidth; 
+      outputBox.innerText = prompt ? `${prompt} — ${thought}` : thought;
+      outputBox.classList.add("show");
+    });
+  </script>
+</body>
+</html>
